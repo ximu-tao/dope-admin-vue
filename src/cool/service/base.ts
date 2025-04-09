@@ -54,7 +54,9 @@ export class BaseService {
 				}
 
 				// 拼接前缀
-				if (this.namespace) {
+				if (this.url) {
+					ns += '/' + this.url;
+				}else if (this.namespace) {
 					ns += '/' + this.namespace;
 				}
 
