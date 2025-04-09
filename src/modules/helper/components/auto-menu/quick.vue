@@ -41,6 +41,15 @@ function open() {
 		width: '800px',
 		items: [
 			{
+				prop: 'entity',
+				label: '数据结构',
+				span: 14,
+				component: {
+					name: 'slot-entity'
+				},
+				required: true
+			},
+			{
 				prop: 'module',
 				label: '选择模块',
 				span: 10,
@@ -54,15 +63,6 @@ function open() {
 						defaultFirstOption: true,
 						options: module.dirs
 					}
-				},
-				required: true
-			},
-			{
-				prop: 'entity',
-				label: '数据结构',
-				span: 14,
-				component: {
-					name: 'slot-entity'
 				},
 				required: true
 			},
@@ -168,7 +168,7 @@ function open() {
 			{
 				prop: 'isAi',
 				label: '是否AI分析',
-				value: 1,
+				value: 0,
 				component: {
 					name: 'el-radio-group',
 					options: [
@@ -235,6 +235,7 @@ function onEntityChange(val: any) {
 
 	if (item) {
 		Form.value?.setForm('router', `/${item.value}`);
+		Form.value?.setForm('module', val[0] );
 	}
 }
 
