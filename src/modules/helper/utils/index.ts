@@ -4,12 +4,14 @@ import { request } from '/@/cool/service/request';
 
 // 获取匹配规则
 export async function getRules() {
-	const eps: { components: PropRule[] } = await request({
+	const res: string = await request({
 		url: '/dev/app/base/comm/param',
 		params: {
 			key: 'epsFieldType'
 		}
 	});
+
+	const eps: { components: PropRule[] } = JSON.parse( res );
 
 	const arr = eps!.components.map(e => {
 		return {
