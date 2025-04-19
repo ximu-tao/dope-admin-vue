@@ -5,6 +5,34 @@ import type { EpsColumn, EpsModule } from '../types';
 export function useCode() {
 	// 特殊情况处理
 	const handler = {
+
+
+	// 	远程下拉
+		remote( column: EpsColumn ){
+
+			const d = {
+				table: null,
+				form: {
+					label: column.comment,
+					component: {
+						name: column.component
+					}
+				} as ClForm.Item
+			};
+
+
+			if (!d.form.component?.props) {
+				d.form.component!.props = {
+					namespace: column.namespace,
+					multiple: column.multiple,
+					field: column.field,
+				};
+			}
+
+			return d;
+		},
+
+
 		// 单选
 		dict({ comment }: EpsColumn) {
 			const [label, ...arr] = comment.split(' ');
@@ -237,12 +265,12 @@ export function useCode() {
 			}
 
 			// 表单忽略
-			if (!['createTime', 'updateTime', 'id', 'endTime', 'endDate'].includes(item.prop)) {
+			if (!['createTime', 'updateTime', 'id', 'endTime', 'endDate' , 'isDelete'].includes(item.prop)) {
 				upsert.items.push(item);
 			}
 
 			// 表格忽略
-			if (!['id'].includes(item.prop)) {
+			if (!['id', 'isDelete'].includes(item.prop)) {
 				// 默认排序
 				if (item.prop == 'createTime') {
 					column.sortable = 'desc';

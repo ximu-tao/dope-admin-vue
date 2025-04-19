@@ -5,6 +5,13 @@ export declare interface EpsColumn {
 	propertyName: string;
 	type: string;
 	component: string;
+
+
+	// 仅远程下拉时有效
+	namespace: string;
+	multiple: boolean;
+	field: string;
+
 }
 
 export declare interface EpsApi {
