@@ -118,7 +118,7 @@ export function useCode() {
 
 	// 创建组件
 	function createComponent(column: EpsColumn, columns: EpsColumn[]) {
-		const prop = column.propertyName;
+		let prop = column.propertyName;
 		let label = column.comment || '';
 		let d: any;
 		let isHidden = false;
@@ -197,6 +197,25 @@ export function useCode() {
 		// 格式化标题
 		label = label?.split?.(' ')?.[0] || column.propertyName;
 
+
+
+		if ( prop.includes('___')) {
+			prop = prop.replace('___', '.');
+
+			return {
+				column: {
+					label,
+					prop,
+					...d?.table
+				},
+				item: {
+
+				},
+				isHidden
+			};
+		}
+
+
 		return {
 			column: {
 				label,
@@ -265,12 +284,14 @@ export function useCode() {
 			}
 
 			// 表单忽略
-			if (!['createTime', 'updateTime', 'id', 'endTime', 'endDate' , 'isDelete'].includes(item.prop)) {
-				upsert.items.push(item);
+			if (!['createTime', 'updateTime', 'id' , 'isDelete'].includes(item.prop)) {
+				if ( item.prop ){
+					upsert.items.push(item);
+				}
 			}
 
 			// 表格忽略
-			if (!['id', 'isDelete'].includes(item.prop)) {
+			if (![ 'isDelete'].includes(item.prop)) {
 				// 默认排序
 				if (item.prop == 'createTime') {
 					column.sortable = 'desc';
