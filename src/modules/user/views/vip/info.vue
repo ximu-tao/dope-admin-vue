@@ -54,10 +54,8 @@ const Upsert = useUpsert({
 		{
 			label: "会员天数",
 			prop: "day",
-			component: {
-				name: "el-date-picker",
-				props: { type: "date", valueFormat: "YYYY-MM-DD" }
-			}
+			component: { name: "el-input-number" },
+			required: true
 		}
 	]
 });

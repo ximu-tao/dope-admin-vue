@@ -3,10 +3,6 @@
 		<cl-row>
 			<!-- 刷新按钮 -->
 			<cl-refresh-btn />
-			<!-- 新增按钮 -->
-			<cl-add-btn />
-			<!-- 删除按钮 -->
-			<cl-multi-delete-btn />
 
 			<cl-flex1 />
 			<!-- 关键字搜索 -->
@@ -143,7 +139,7 @@ const Table = useTable({
 			sortable: "custom",
 			component: { name: "cl-date-text" }
 		},
-		{ type: "op", buttons: ["edit", "delete"] }
+		{ type: "op", buttons: ["info", "delete"] }
 	]
 });
 
