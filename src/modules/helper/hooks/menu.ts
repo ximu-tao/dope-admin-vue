@@ -15,6 +15,8 @@ export function useMenu() {
 				''
 			)}.vue`;
 
+			data.perms = (data.prefix.replace('/admin/', '') + 'index').replace(/\//g, ':')
+
 			// 添加菜单
 			service.base.sys.menu
 				.add({
