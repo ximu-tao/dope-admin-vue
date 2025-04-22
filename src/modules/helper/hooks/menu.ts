@@ -68,7 +68,7 @@ export function useMenu() {
 									}
 								})
 								.then(() => {
-									location.reload();
+									// location.reload();
 								});
 						});
 					});
