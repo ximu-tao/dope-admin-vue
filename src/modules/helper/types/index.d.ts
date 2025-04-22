@@ -30,6 +30,7 @@ export declare interface EpsModule {
 	prefix: string;
 	router: string;
 	module: string;
+	perms: string,
 	fieldEq?: string[];
 	keyWordLikeFields?: string[];
 	[key: string]: any;
