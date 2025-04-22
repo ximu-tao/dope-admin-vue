@@ -280,7 +280,9 @@ export function useCode() {
 					column.dict = str;
 				}
 
-				item.component.options = str;
+				if ( item.component ){
+					item.component.options = str;
+				}
 			}
 
 			// 表单忽略
